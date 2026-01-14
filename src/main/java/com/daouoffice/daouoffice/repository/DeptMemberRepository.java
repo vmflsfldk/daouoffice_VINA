@@ -2,6 +2,7 @@ package com.daouoffice.daouoffice.repository;
 
 import com.daouoffice.daouoffice.entity.DeptMember;
 import com.daouoffice.daouoffice.entity.DeptMemberId;
+import com.daouoffice.daouoffice.dto.UserDeptProjection;
 import com.daouoffice.daouoffice.dto.UserDto;
 import com.daouoffice.daouoffice.dto.UserSearchDto;
 import com.daouoffice.daouoffice.dto.UserDetailDto;
@@ -9,6 +10,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public interface DeptMemberRepository extends JpaRepository<DeptMember, DeptMemberId> {
 
@@ -37,14 +39,14 @@ public interface DeptMemberRepository extends JpaRepository<DeptMember, DeptMemb
       JOIN department_tree dt ON d.parent_id = dt.id
     )
     SELECT
-      u.id AS user_id,
-      u.name AS user_name,
-      dc.ko_name AS position_name,
-      CONCAT('https://gw.sghitech.co.kr/thumb/user/small/', af.id, '-', af.length) AS photo_url,
-      dm.sort_order AS sort_order,
+      u.id AS userId,
+      u.name AS userName,
+      dc.ko_name AS positionName,
+      CONCAT('https://gw.sghitech.co.kr/thumb/user/small/', af.id, '-', af.length) AS photoUrl,
+      dm.sort_order AS sortOrder,
       dm.type AS type,
-      dm.department_id AS department_id,
-      d.name AS department_name
+      dm.department_id AS departmentId,
+      d.name AS departmentName
     FROM
       go_dept_members dm
     JOIN
@@ -70,7 +72,21 @@ public interface DeptMemberRepository extends JpaRepository<DeptMember, DeptMemb
       COALESCE(dm.sort_order, 2147483647),
       u.name
     """, nativeQuery = true)
-    List<UserDto> findUsersByDepartment(@Param("deptId") Long deptId);
+    List<UserDeptProjection> findUserProjectionsByDepartment(@Param("deptId") Long deptId);
+
+    default List<UserDto> findUsersByDepartment(Long deptId) {
+        return findUserProjectionsByDepartment(deptId).stream()
+                .map(projection -> new UserDto(
+                        projection.getUserId(),
+                        projection.getUserName(),
+                        projection.getPositionName(),
+                        projection.getPhotoUrl(),
+                        projection.getSortOrder(),
+                        projection.getType(),
+                        projection.getDepartmentId(),
+                        projection.getDepartmentName()))
+                .collect(Collectors.toList());
+    }
 
     // 이름 또는 login_id로 사용자 검색
     @Query("""
