@@ -1,0 +1,85 @@
+.tag-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.18), rgba(148, 163, 184, 0.08));
+  font-family: 'Pretendard', 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #0f172a;
+  text-align: center;
+}
+
+.tag-label__bracket {
+  color: rgba(15, 23, 42, 0.55);
+}
+
+.tag-label__separator {
+  color: rgba(71, 85, 105, 0.85);
+}
+
+.tag-label__prefix,
+.tag-label__suffix {
+  font-weight: 700;
+}
+
+.tag-prefix--default,
+.tag-suffix--default {
+  color: var(--accent);
+}
+
+.tag-prefix--qv {
+  color: #22c55e;
+}
+
+.tag-prefix--yp {
+  color: #1d4ed8;
+}
+
+.tag-suffix--ehs {
+  color: #f97316;
+}
+
+.tag-suffix--acco {
+  color: #8b5cf6;
+}
+
+.tag-suffix--hr {
+  color: #ef4444;
+}
+
+.tag-suffix--busi {
+  color: #0ea5e9;
+}
+
+.tag-suffix--ware {
+  color: #facc15;
+}
+
+.tag-suffix--pur {
+  color: #14b8a6;
+}
+
+.tag-suffix--trad {
+  color: #6366f1;
+}
+
+.tag-suffix--it {
+  color: #2563eb;
+}
+
+.tag-suffix--rnd {
+  color: #e11d48;
+}
+
+.tag-suffix--pro {
+  color: #16a34a;
+}
+
+.tag-suffix--qc {
+  color: #c026d3;
+}
