@@ -12,7 +12,7 @@ public class UserDetailsDto {
     private String mobileNo;
     private String joinDate;
 
-    public UserDetailsDto(Long userId,
+    public UserDetailsDto(long userId,
                           String name,
                           String photoUrl,
                           String departmentName,
@@ -32,76 +32,6 @@ public class UserDetailsDto {
         this.extension = extension;
         this.mobileNo = mobileNo;
         this.joinDate = joinDate;
-    }
-    
-    public UserDetailsDto(long userId,
-                          String name,
-                          String photoUrl,
-                          String departmentName,
-                          String positionName,
-                          String email,
-                          String directTel,
-                          String extension,
-                          String mobileNo,
-                          String joinDate) {
-        this(Long.valueOf(userId),
-             name,
-             photoUrl,
-             departmentName,
-             positionName,
-             email,
-             directTel,
-             extension,
-             mobileNo,
-             joinDate);
-    }
-
-    public UserDetailsDto(long userId,
-                          Object name,
-                          Object photoUrl,
-                          Object departmentName,
-                          Object positionName,
-                          Object email,
-                          Object directTel,
-                          Object extension,
-                          Object mobileNo,
-                          Object joinDate) {
-        this(Long.valueOf(userId),
-             name,
-             photoUrl,
-             departmentName,
-             positionName,
-             email,
-             directTel,
-             extension,
-             mobileNo,
-             joinDate);
-    }
-
-    public UserDetailsDto(Long userId,
-                          Object name,
-                          Object photoUrl,
-                          Object departmentName,
-                          Object positionName,
-                          Object email,
-                          Object directTel,
-                          Object extension,
-                          Object mobileNo,
-                          Object joinDate) {
-        this(userId,
-             toStringOrNull(name),
-             toStringOrNull(photoUrl),
-             toStringOrNull(departmentName),
-             toStringOrNull(positionName),
-             toStringOrNull(email),
-             toStringOrNull(directTel),
-             toStringOrNull(extension),
-             toStringOrNull(mobileNo),
-             toStringOrNull(joinDate));
-    }
-
-    private static String toStringOrNull(Object value) {
-        return value != null ? value.toString() : null;
     }
 
     // getters & setters
