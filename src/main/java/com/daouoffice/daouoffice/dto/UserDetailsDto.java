@@ -56,6 +56,28 @@ public class UserDetailsDto {
              joinDate);
     }
 
+    public UserDetailsDto(long userId,
+                          Object name,
+                          Object photoUrl,
+                          Object departmentName,
+                          Object positionName,
+                          Object email,
+                          Object directTel,
+                          Object extension,
+                          Object mobileNo,
+                          Object joinDate) {
+        this(Long.valueOf(userId),
+             name,
+             photoUrl,
+             departmentName,
+             positionName,
+             email,
+             directTel,
+             extension,
+             mobileNo,
+             joinDate);
+    }
+
     public UserDetailsDto(Long userId,
                           Object name,
                           Object photoUrl,
